@@ -1,20 +1,14 @@
 import { Link } from 'react-router-dom'
 import { Star, BookOpen } from 'lucide-react'
 
-const API_URL = import.meta.env.VITE_API_URL || ''
-
 const categoryColors = {
   'A Lire': 'bg-blue-100 text-blue-700',
-  'En Cours De Lecture': 'bg-yellow-100 text-yellow-700',
-  'Lu': 'bg-green-100 text-green-700',
-  'Non Fini': 'bg-red-100 text-red-700',
+  'En cours': 'bg-yellow-100 text-yellow-700',
+  'Terminé': 'bg-green-100 text-green-700',
+  'Abandonné': 'bg-red-100 text-red-700',
 }
 
 export default function BookCard({ book }) {
-  const coverUrl = book.cover_url
-    ? `${API_URL}${book.cover_url}`
-    : null
-
   return (
     <Link
       to={`/book/${book.id}`}
@@ -23,9 +17,9 @@ export default function BookCard({ book }) {
       <div className="flex gap-4">
         {/* Cover */}
         <div className="w-20 h-28 bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden">
-          {coverUrl ? (
+          {book.cover_url ? (
             <img
-              src={coverUrl}
+              src={book.cover_url}
               alt={book.title}
               className="w-full h-full object-cover"
             />

@@ -1,10 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
-import { BookOpen, BarChart2, Settings, LogOut, Library } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+import { BookOpen, BarChart2, Library } from 'lucide-react'
 
 export default function Navbar() {
   const location = useLocation()
-  const { user, logout } = useAuth()
 
   const links = [
     { to: '/', icon: Library, label: 'Bibliothèque' },
@@ -37,19 +35,6 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className="text-gray-600 hidden sm:inline">
-              {user?.username}
-            </span>
-            <button
-              onClick={logout}
-              className="flex items-center gap-2 text-gray-600 hover:text-red-500 transition-colors"
-            >
-              <LogOut size={20} />
-              <span className="hidden sm:inline">Déconnexion</span>
-            </button>
           </div>
         </div>
       </div>
